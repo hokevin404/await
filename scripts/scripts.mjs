@@ -45,11 +45,12 @@ async function userProfile(id)
 
     const userDB = await Promise.resolve(dbCheck(id));
     console.log(userDB);
-    // const result = await Promise.resolve(dbs[userDB](id));
-    // console.log(result);
 
     const userInfo = await Promise.resolve(getUserInfo(userDB, id));
     console.log(userInfo);
+
+    const userPII = await Promise.resolve(getUserPII(id));
+    console.log(userPII);
     
     // console.log(`User DB: `)
     // console.log(userDB);
@@ -72,10 +73,19 @@ function dbCheck(id)
 function getUserInfo(database, id)
 {
     const returnedInfo = dbs[database](id);
-    console.log(`Returned User Info: `);
-    console.log(returnedInfo);
+    // console.log(`Returned User Info: `);
+    // console.log(returnedInfo);
 
     return returnedInfo;
+}
+
+function getUserPII(id)
+{
+    const returnedPII = vault(id);
+    // console.log(`Returned User PII: `);
+    // console.log(returnedPII);
+
+    return returnedPII;
 }
 
 const profile = userProfile(1);
