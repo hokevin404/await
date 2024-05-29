@@ -26,22 +26,30 @@ import { central, db1, db2, db3, vault } from "./database.mjs";
 //     }
 // }
 
-async function getUserData(id) {
-  const dbs = {
+
+const dbs = {
     db1: db1,
     db2: db2,
     db3: db3
-  };
-}
+};
 
 async function userProfile(id)
 {
+    const dbs = {
+        db1: db1,
+        db2: db2,
+        db3: db3
+    };
+
     let profile = {};
 
-    const userDB = await dbCheck(id);
+    const userDB = await Promise.resolve(dbCheck(id));
     console.log(userDB);
-    const result = dbs.
-    console.log(result);
+    // const result = await Promise.resolve(dbs[userDB](id));
+    // console.log(result);
+
+    const userInfo = await Promise.resolve(getUserInfo(userDB, id));
+    console.log(userInfo);
     
     // console.log(`User DB: `)
     // console.log(userDB);
@@ -59,6 +67,15 @@ function dbCheck(id)
     // console.log(returnedDB);
   
     return returnedDB;
+}
+
+function getUserInfo(database, id)
+{
+    const returnedInfo = dbs[database](id);
+    console.log(`Returned User Info: `);
+    console.log(returnedInfo);
+
+    return returnedInfo;
 }
 
 const profile = userProfile(1);
