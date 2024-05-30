@@ -53,68 +53,13 @@ async function userProfile(id)
     } catch (error) {
         console.error(`ERROR: ${error}`);
     }
-
-
-    // console.log(profile);
-
-
-    // const userDB = await Promise.resolve(dbCheck(id));
-    // console.log(userDB);
-
-    // const userInfo = getUserInfo(userDB, id);
-    // // console.log(userInfo);
-    // // profile = Object.assign(profile, userInfo);
-
-    // const userPII =getUserPII(id);
-    // // // console.log(userPII);
-    // // profile = Object.assign(profile, userPII);
-    
-    // profile = await Promise.all([userInfo, userPII]);
-    // console.log(profile);
-
-    // console.log(`User DB: `)
-    // console.log(userDB);
-
-    // profile = await Promise.all([userDB])
-    // profile['db'] = userDB;
-    
-    // console.log(`User Profile: `);
-    // console.log(profile);
-
-    // return profile;
 }
 
 const endTime = performance.now();
 
-// function dbCheck(id)
-// {
-//     const returnedDB = central(id);
-//     // console.log(`ReturnedDB: `)
-//     // console.log(returnedDB);
-  
-//     return returnedDB;
-// }
-
-// function getUserInfo(database, id)
-// {
-//     const returnedInfo = dbs[database](id);
-//     // console.log(`Returned User Info: `);
-//     // console.log(returnedInfo);
-
-//     return returnedInfo;
-// }
-
-// function getUserPII(id)
-// {
-//     const returnedPII = vault(id);
-//     // console.log(`Returned User PII: `);
-//     // console.log(returnedPII);
-
-//     return returnedPII;
-// }
-
-const result = userProfile(1);
-console.log(result);
+userProfile(1);
+userProfile(11);
+userProfile("1");
 
 const elapsedMs = (endTime - startTime) * 1000;
 console.log(elapsedMs);
